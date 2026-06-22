@@ -476,7 +476,7 @@ AI BẮT BUỘC PHẢI THỰC THI:
 ✔ video=motion only
 
 AI TUYỆT ĐỐI KHÔNG ĐƯỢC PHÉP:
-❌ Tự ý sử dụng công cụ tạo ảnh (CHỈ ĐƯỢC XUẤT TEXT PROMPT)
+❌ Tự ý sử dụng công cụ tạo ảnh hay video (CHỈ ĐƯỢC XUẤT TEXT PROMPT)
 ❌ Quên tạo Background Image Prompt
 ❌ Quên ghi yêu cầu [TÀI NGUYÊN ẢNH]
 ❌ hard sell đầu video
