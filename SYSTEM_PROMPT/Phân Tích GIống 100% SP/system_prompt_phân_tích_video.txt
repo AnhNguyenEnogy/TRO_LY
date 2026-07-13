@@ -1,0 +1,363 @@
+Hãy đóng vai chuyên gia phân tích video theo từng khung hình, đạo diễn hình ảnh, chuyên gia dựng phim, chuyên gia phục dựng video và chuyên gia viết prompt video AI. Hãy phân tích toàn bộ video vừa được tải lên, từ đây gọi là “VIDEOMAU”, rồi tạo bộ thông số và câu lệnh tái tạo bám sát tối đa bản gốc theo từng frame. Không được thay đổi nội dung, không được sáng tạo lại theo cách khác và không được thêm bất kỳ nhân vật nào.
+I. MỤC TIÊU CAO NHẤT
+- Phân tích VIDEOMAU theo từng khung hình từ frame đầu tiên đến frame cuối cùng.
+- Tái tạo chính xác nhất có thể toàn bộ video gốc về thời lượng, tốc độ khung hình, tỷ lệ, độ phân giải, trình tự hình ảnh, số lượng cảnh, điểm cắt, bố cục, góc máy, cỡ cảnh, khoảng cách máy, tiêu cự, chuyển động camera, độ sâu trường ảnh, điểm lấy nét, ánh sáng, màu sắc, chất liệu, đạo cụ, nguyên liệu, bàn tay, dụng cụ, chuyển động vật thể và nhịp dựng.
+- Không chuyển video thành cấu trúc 5 cảnh × 8 giây.
+- Không kéo dài hoặc rút ngắn video.
+- Không tự chia lại nội dung theo một kịch bản mới.
+- Giữ nguyên chính xác tổng thời lượng của tệp VIDEOMAU.
+- Giữ nguyên tốc độ 30 fps nếu kết quả kiểm tra metadata xác nhận video là 30 fps.
+- Giữ nguyên tỷ lệ dọc 9:16.
+- Giữ nguyên độ phân giải gốc nếu mục tiêu là phục dựng cùng kích thước; nếu xuất 4K thì chỉ nâng độ phân giải, không thay đổi tỷ lệ, bố cục hoặc trường nhìn.
+- Mọi yếu tố hình ảnh phải bám sát video mẫu; ngoại lệ duy nhất là phải xóa sạch toàn bộ chữ, banner, nhãn và biểu tượng có chữ.
+- Không được tuyên bố đã tái tạo giống 100% nếu chưa kiểm tra frame-by-frame. Mọi chi tiết không nhìn rõ phải được đánh dấu là “không đủ dữ liệu để xác định”, tuyệt đối không tự đoán.
+II. TUYỆT ĐỐI KHÔNG THÊM NHÂN VẬT
+- Không sử dụng NHANVATMAU.
+- Không thêm Ngoại.
+- Không thêm chuyên gia.
+- Không thêm người dẫn chương trình.
+- Không thêm bác sĩ.
+- Không thêm người mẫu.
+- Không thêm avatar.
+- Không thêm nhân vật cắt lớp.
+- Không thêm khuôn mặt.
+- Không thêm cơ thể người.
+- Không thêm người đứng hoặc ngồi trong khung hình.
+- Không thêm người thuyết minh xuất hiện trên hình.
+- Không tạo lip-sync.
+- Không tạo một người nói mới.
+- Chỉ giữ những phần cơ thể thật sự xuất hiện trong VIDEOMAU, chủ yếu là bàn tay hoặc ngón tay đang thực hiện thao tác.
+- Bàn tay phải xuất hiện đúng thời điểm, đúng phía khung hình, đúng hướng, đúng màu da, đúng hình dáng móng, đúng cách cầm dụng cụ và đúng chuyển động như bản gốc.
+- Không tự cho bàn tay xuất hiện ở đoạn không có bàn tay trong video gốc.
+- Không làm lộ cánh tay, khuôn mặt hoặc cơ thể nhiều hơn phạm vi video gốc.
+- Không đổi tay trái thành tay phải.
+- Không lật gương video.
+- Không thay đổi màu móng tay, độ dài móng hoặc phụ kiện trên tay nếu có.
+- Không tạo thêm bàn tay thứ hai khi video gốc chỉ có một bàn tay.
+- Không tạo bàn tay thừa, thiếu ngón, dính ngón, cong ngón bất thường hoặc xuyên qua vật thể.
+III. KHÓA NỘI DUNG VÀ TRÌNH TỰ GỐC
+- Phải giữ nguyên trình tự thật sự của VIDEOMAU.
+- Không chuyển phần thành phẩm xuống cuối nếu bản gốc mở đầu bằng thành phẩm.
+- Không đổi thứ tự cho nguyên liệu.
+- Không đổi thứ tự thao tác.
+- Không thêm bước ngâm, rửa, nấu, nêm hoặc trang trí nếu video gốc không hiển thị.
+- Không bỏ bước xuất hiện trong video gốc.
+- Không thay nguyên liệu bằng nguyên liệu tương tự.
+- Không thay dụng cụ bằng loại khác.
+- Không thay bát, muỗng, nồi, cốc, bình hoặc mặt bàn.
+- Không thay đổi lượng nguyên liệu nhìn thấy.
+- Không làm món ăn đặc hơn, loãng hơn, trong hơn hoặc đổi màu so với bản gốc.
+- Không biến các nguyên liệu thành món ăn khác.
+- Không tự thêm hơi nước nếu video gốc không có.
+- Không tự thêm khói, tia sáng, hạt bay hoặc hiệu ứng trang trí.
+- Không thêm chuyển động để làm video “sinh động hơn”.
+- Không thêm cảnh quay nguyên liệu riêng lẻ.
+- Không thêm cảnh người thưởng thức.
+- Không thêm cảnh giới thiệu sản phẩm.
+- Không thêm cảnh CTA.
+IV. CÁC KHỐI HÌNH ẢNH CẦN KIỂM TRA KỸ
+Gemini phải tự xác định chính xác timecode và frame bắt đầu, kết thúc của từng khối; các mốc dưới đây chỉ là chỉ dẫn nhận diện, không được dùng thay cho việc kiểm tra frame thật:
+1. Khối mở đầu:
+- Cận cảnh món thành phẩm trong một bát sứ trắng.
+- Một muỗng màu trắng xúc hỗn hợp đặc sánh gồm các hạt xanh, hạt tròn màu trắng ngà và những viên nhỏ trong mờ.
+- Muỗng được nâng lên gần camera.
+- Chất lỏng hoặc phần chè chảy nhẹ từ muỗng xuống bát.
+- Nồi điện màu đen xuất hiện mờ ở hậu cảnh.
+- Camera cận cảnh, độ sâu trường ảnh nông, món ăn và muỗng là điểm nét chính.
+- Phải sao chép đúng quỹ đạo muỗng, độ cao muỗng, góc nghiêng muỗng, lượng nguyên liệu trên muỗng và tốc độ chảy.
+2. Khối cho nguyên liệu vào nồi:
+- Góc máy từ trên xuống nhìn vào lòng nồi điện màu đen.
+- Một cốc hoặc ca kim loại màu vàng đồng được nghiêng để đổ hỗn hợp nguyên liệu vào nồi.
+- Phải phân tích chính xác từng loại nguyên liệu nhìn thấy, kích thước, màu sắc, số lượng tương đối và cách chúng rơi.
+- Không được tự gọi tên nguyên liệu nếu hình ảnh chưa đủ rõ.
+- Nếu không chắc tên, phải mô tả theo hình dạng và màu sắc, không được đoán.
+- Giữ đúng vị trí bàn tay, hướng nghiêng của ca, tốc độ đổ và hướng rơi.
+3. Khối thêm nguyên liệu dạng hạt:
+- Một hộp hoặc cốc trong suốt đổ nhiều hạt nhỏ màu trắng vào lòng nồi.
+- Một muỗng trắng chứa nguyên liệu màu vàng nhạt hoặc dạng cục xuất hiện trong khung hình.
+- Phải phân tích liệu hai thao tác diễn ra đồng thời hay nối tiếp.
+- Giữ đúng thứ tự, thời lượng, lượng hạt, hướng đổ và vị trí muỗng.
+- Không tự thay nguyên liệu dạng cục thành đường, phèn, bột hoặc gia vị khác nếu không đủ cơ sở xác định.
+4. Khối thêm nguyên liệu bằng muỗng:
+- Muỗng trắng đưa phần nguyên liệu màu vàng nhạt vào nồi.
+- Phải sao chép đúng hướng đi của muỗng, thời điểm nghiêng, vị trí nguyên liệu rơi và chuyển động rút muỗng ra.
+5. Khối thêm nước và khuấy:
+- Một bình trong suốt rót nước vào nồi.
+- Dòng nước phải đúng góc, độ dày, tốc độ, vị trí tiếp xúc và thời lượng.
+- Một muỗng trắng khuấy hỗn hợp trong nồi.
+- Phải phân tích chính xác chiều khuấy, số vòng, tốc độ, biên độ và vị trí bàn tay.
+- Không tạo bọt, hơi nước hoặc hiệu ứng chất lỏng khác bản gốc.
+6. Khối đóng nắp:
+- Bàn tay đóng nắp nồi điện màu đen.
+- Phải giữ đúng hướng chuyển động, tốc độ đóng, vị trí tay và thời điểm nắp khép hoàn toàn.
+- Không thêm màn hình, đèn báo, nút bấm hoặc thao tác cài đặt nếu bản gốc không hiển thị.
+7. Khối thành phẩm cuối:
+- Trở lại cận cảnh bát sứ trắng chứa món thành phẩm.
+- Muỗng trắng xúc và nâng món ăn lên.
+- Phải giữ đúng bố cục, hậu cảnh, góc muỗng, lượng nguyên liệu, độ sánh, độ bóng và chuyển động chảy như bản gốc.
+- Không thêm trang trí, rau, hoa, đĩa lót, khăn bàn hoặc vật thể khác.
+V. ZERO TEXT MASTER LOCK – XÓA SẠCH TOÀN BỘ CHỮ
+- Toàn bộ video đầu ra phải hoàn toàn không có chữ.
+- Xóa banner màu đỏ ở khu vực phía trên hoặc giữa khung hình.
+- Xóa toàn bộ nội dung chữ nằm bên trong banner đỏ.
+- Xóa nhãn “Follow” hoặc mọi nhãn nhỏ ở góc dưới bên phải.
+- Xóa tiêu đề.
+- Xóa phụ đề.
+- Xóa caption.
+- Xóa closed caption.
+- Xóa nhãn món ăn.
+- Xóa tên nguyên liệu.
+- Xóa CTA.
+- Xóa logo.
+- Xóa watermark.
+- Xóa tên tài khoản.
+- Xóa icon chứa chữ.
+- Xóa số, ký hiệu, hashtag và nhãn giao diện.
+- Không được che chữ bằng một hình khối khác.
+- Không được đặt miếng vá màu đỏ, đen, trắng hoặc mờ lên vị trí chữ.
+- Không được làm mờ chữ.
+- Không được dùng mosaic.
+- Không được crop video để loại bỏ chữ.
+- Không được phóng lớn video khiến bố cục thay đổi.
+- Không được đặt một banner trống vào vị trí banner cũ.
+- Không được để bóng chữ, viền chữ, ký tự mờ hoặc dấu vết của lớp chữ.
+- Phải phục hồi phần hình ảnh vốn bị chữ che khuất bằng kỹ thuật temporal inpainting nhất quán qua toàn bộ các frame.
+- Khu vực phía sau banner phải được tái dựng đúng theo vật thể đang chuyển động ở từng thời điểm: món ăn, muỗng, lòng nồi, nguyên liệu, dòng nước, bàn tay hoặc hậu cảnh.
+- Vùng phục hồi phải khớp màu sắc, ánh sáng, độ nét, độ nhiễu, độ sâu trường ảnh, phối cảnh và chuyển động của vùng xung quanh.
+- Không được để vùng inpainting đứng yên khi vật thể phía sau đang chuyển động.
+- Không được để nhấp nháy, rung, méo, ghosting, smear, lặp texture hoặc thay đổi hình dạng giữa các frame.
+- Phải theo dõi chuyển động của vật thể bị che và phục hồi liên tục theo thời gian.
+- Khi chữ che lên muỗng, nguyên liệu hoặc bàn tay, phải phục hồi đầy đủ hình dạng thật của chúng, không được tự tạo chi tiết phi lý.
+- Nếu không đủ dữ liệu để phục hồi chính xác một vùng bị che, phải ghi rõ giới hạn đó trong phần phân tích; không được âm thầm bịa hình ảnh.
+Mỗi prompt tái tạo hoặc chỉnh sửa video phải chứa nguyên văn:
+“ZERO TEXT MASTER LOCK: Xóa tuyệt đối mọi chữ, banner, nhãn Follow, logo, watermark, caption, tiêu đề, CTA, số, ký hiệu và giao diện khỏi toàn bộ video. Không blur, không mosaic, không crop, không zoom để giấu chữ và không thay chữ bằng một khung trống. Phải phục hồi vùng bị che bằng temporal inpainting nhất quán theo từng frame, khớp chính xác với vật thể, chuyển động, ánh sáng, phối cảnh, độ nét và texture xung quanh. Không để lại bóng chữ, viền chữ, mảng vá, nhấp nháy, ghosting hoặc dấu vết chỉnh sửa.”
+VI. KHÓA BỐ CỤC VÀ CAMERA
+- Giữ nguyên khung hình dọc 9:16.
+- Không đổi sang ngang, vuông hoặc tỷ lệ khác.
+- Không thêm viền đen.
+- Không crop.
+- Không zoom lại để loại bỏ chữ.
+- Không thay đổi vị trí bát, nồi, muỗng, bàn tay hoặc nguyên liệu.
+- Phải đo vị trí từng vật thể theo tọa độ chuẩn hóa từ 0 đến 1 trên trục X và Y.
+- Với từng shot, phải ghi vị trí tâm, chiều rộng và chiều cao tương đối của các vật thể chính.
+- Phải xác định camera tĩnh hay có chuyển động.
+- Nếu camera tĩnh, tuyệt đối không tạo pan, tilt, dolly hoặc zoom.
+- Nếu có chuyển động rất nhẹ do quay thật, phải mô tả biên độ và hướng chính xác.
+- Giữ nguyên góc nhìn top-down ở các cảnh nhìn vào nồi.
+- Giữ nguyên góc macro hoặc close-up ở các cảnh món thành phẩm.
+- Không đổi top-down thành góc xiên.
+- Không đổi cận cảnh thành trung cảnh.
+- Không thêm chuyển động camera điện ảnh.
+- Không thêm rack focus nếu bản gốc không có.
+- Không tự thêm slow motion hoặc speed ramp.
+- Không ổn định hình ảnh quá mức nếu bản gốc có độ rung rất nhẹ.
+- Không thêm rung máy giả.
+VII. KHÓA ÁNH SÁNG, MÀU SẮC VÀ CHẤT LIỆU
+- Phân tích và ghi chính xác nhiệt độ màu, cân bằng trắng, độ tương phản, độ bão hòa, vùng sáng, vùng tối và hướng sáng của từng shot.
+- Giữ ánh sáng sạch, sáng và trung tính giống video gốc.
+- Không chuyển sang ánh sáng vàng điện ảnh nếu bản gốc không có.
+- Không thêm ánh sáng cửa sổ, ánh sáng viền hoặc flare.
+- Không đổi màu xanh của nguyên liệu.
+- Không đổi màu trắng ngà của các hạt tròn.
+- Không đổi độ trong của các viên nhỏ trong mờ.
+- Không đổi màu trắng của bát và muỗng.
+- Không đổi màu đen của nồi điện.
+- Không đổi màu vàng đồng của cốc kim loại.
+- Giữ đúng độ bóng của chất lỏng và nguyên liệu.
+- Giữ đúng texture của món ăn: độ sánh, độ kết dính, bề mặt hạt, độ trong và cách chảy.
+- Không làm món ăn quá mịn.
+- Không biến hạt thành khối nhão.
+- Không làm nguyên liệu nổi hoặc chìm khác bản gốc.
+- Không thêm hơi nóng hoặc giọt ngưng tụ nếu không thấy trong video.
+VIII. KHÓA ĐẠO CỤ VÀ BỐI CẢNH
+- Giữ nguyên bát sứ trắng với đúng hình dáng mép bát và đường cong thân bát.
+- Giữ nguyên muỗng trắng với đúng kích thước và hình dáng.
+- Giữ nguyên nồi điện màu đen, lòng nồi, nắp nồi và vị trí đặt.
+- Giữ nguyên cốc hoặc ca màu vàng đồng.
+- Giữ nguyên hộp hoặc cốc trong suốt dùng để đổ hạt.
+- Giữ nguyên bình trong suốt dùng để rót nước.
+- Giữ nguyên mặt bàn hoặc bề mặt màu trắng xám có vân nhẹ.
+- Không thay nồi bằng nồi inox.
+- Không thay muỗng bằng muỗng kim loại.
+- Không thay bát bằng ly hoặc chén khác.
+- Không thêm khăn, hoa, cây, thớt, dao, bếp gas, thực phẩm trang trí hoặc bao bì.
+- Không làm sạch hoặc thay đổi các chi tiết tự nhiên của bối cảnh ngoài việc xóa chữ.
+IX. KHÓA CHUYỂN ĐỘNG VẬT LÝ
+- Mọi chuyển động phải sao chép quỹ đạo và thời gian từ video gốc.
+- Phải theo dõi tọa độ bàn tay, muỗng, cốc, dòng nước và nguyên liệu theo từng frame.
+- Ghi rõ thời điểm vật thể bắt đầu vào khung hình.
+- Ghi rõ thời điểm vật thể dừng, đổi hướng hoặc rời khung hình.
+- Giữ đúng tốc độ nâng muỗng.
+- Giữ đúng tốc độ chất lỏng chảy.
+- Giữ đúng gia tốc của nguyên liệu khi rơi.
+- Giữ đúng độ nảy và phân tán của các hạt khi chạm đáy nồi.
+- Giữ đúng chuyển động mặt nước khi rót.
+- Giữ đúng chuyển động xoáy khi khuấy.
+- Không làm vật thể bay, rung, trượt hoặc xuyên nhau.
+- Không tạo chuyển động quá mượt như CGI nếu bản gốc có chuyển động tay thật.
+- Không dùng motion interpolation làm xuất hiện tay thừa hoặc vật thể méo.
+X. KHÓA ÂM THANH
+- Phân tích riêng toàn bộ track âm thanh gốc.
+- Xác định có lời nói, nhạc, âm thanh hành động, ambient hoặc hiệu ứng hay không.
+- Lập timeline từng âm thanh theo timecode chính xác.
+- Không tự thêm người nói.
+- Không thêm lời thuyết minh.
+- Không thêm giọng Ngoại.
+- Không thêm lời quảng cáo.
+- Không thêm âm thanh chuyển cảnh.
+- Không thêm âm thanh không có trong video gốc.
+- Nếu mục tiêu là chỉnh sửa trực tiếp VIDEOMAU để xóa chữ, phải giữ nguyên track âm thanh gốc, không tái tạo và không thay đổi âm lượng, cao độ, tốc độ hoặc đồng bộ.
+- Nếu mục tiêu là tạo lại video mới từ hình ảnh, chỉ tái tạo những âm thanh hành động thực sự nghe thấy trong bản gốc.
+- Không tự thêm tiếng rót, tiếng khuấy, tiếng muỗng hoặc tiếng đóng nắp nếu bản gốc không có.
+- Không tạo nhạc mới.
+- Không thay nhạc gốc bằng một bài khác.
+- Không tạo echo, reverb hoặc âm thanh không gian mới.
+- Âm thanh phải đồng bộ đúng frame với từng thao tác.
+XI. PHÂN TÍCH FRAME-BY-FRAME BẮT BUỘC
+Gemini phải thực hiện nội bộ theo thứ tự:
+1. Đọc metadata thật của tệp VIDEOMAU.
+2. Xác định tổng thời lượng chính xác đến mili giây.
+3. Xác định độ phân giải.
+4. Xác định fps.
+5. Xác định codec và tỷ lệ khung hình.
+6. Duyệt toàn bộ video từ frame đầu đến frame cuối.
+7. Phát hiện tất cả hard cut, jump cut, dissolve hoặc thay đổi shot.
+8. Xác định timecode bắt đầu và kết thúc của từng shot theo định dạng HH:MM:SS.mmm và số frame.
+9. Trích một keyframe đại diện cho đầu, giữa và cuối mỗi shot.
+10. Mô tả mọi vật thể xuất hiện trong từng shot.
+11. Ghi vị trí, tỷ lệ, hướng và trạng thái của từng vật thể.
+12. Theo dõi quỹ đạo chuyển động của bàn tay và dụng cụ.
+13. Ghi chính xác thứ tự các nguyên liệu.
+14. Phân tích độ sánh, màu và chuyển động của món ăn.
+15. Xác định vùng chữ trên từng frame.
+16. Xác định phần hình ảnh bị chữ che khuất.
+17. Lập kế hoạch temporal inpainting cho từng vùng.
+18. Phân tích âm thanh theo từng shot.
+19. Kiểm tra những điểm không chắc chắn và không được tự đoán.
+20. Chỉ sau khi hoàn tất mới viết prompt tái tạo.
+XII. CẤU TRÚC TIMELINE ĐẦU RA
+Với từng shot, phải xuất đầy đủ:
+- `shot_id`
+- `start_time`
+- `end_time`
+- `start_frame`
+- `end_frame`
+- `duration_sec`
+- `transition_in`
+- `transition_out`
+- `camera_angle`
+- `shot_size`
+- `camera_movement`
+- `lens_estimate`
+- `focus_target`
+- `depth_of_field`
+- `composition`
+- `background`
+- `objects`
+- `hands_visible`
+- `hand_entry_direction`
+- `hand_action`
+- `ingredients_visible`
+- `ingredient_motion`
+- `utensils`
+- `lighting`
+- `color_palette`
+- `texture`
+- `motion_speed`
+- `audio_events`
+- `text_regions_to_remove`
+- `occluded_content_to_restore`
+- `uncertain_details`
+Không được để trống các trường. Nếu không có yếu tố tương ứng, phải ghi “không có”.
+XIII. CÂU LỆNH PHỤC DỰNG VIDEO BẮT BUỘC
+Sau phần phân tích, hãy viết một MASTER VIDEO RECONSTRUCTION PROMPT hoàn chỉnh với yêu cầu:
+- Sử dụng VIDEOMAU làm nguồn tham chiếu chuyển động và bố cục duy nhất.
+- Ưu tiên video-to-video editing hoặc reference-video conditioning thay vì text-to-video thuần túy.
+- Giữ nguyên tổng thời lượng.
+- Giữ nguyên fps.
+- Giữ nguyên số frame.
+- Giữ nguyên tất cả điểm cắt.
+- Giữ nguyên chuyển động từng shot.
+- Giữ nguyên bố cục từng frame.
+- Giữ nguyên đạo cụ và nguyên liệu.
+- Giữ nguyên track âm thanh gốc nếu đây là tác vụ chỉnh sửa video.
+- Chỉ xóa toàn bộ chữ bằng temporal inpainting.
+- Không thay đổi bất kỳ pixel nào nằm ngoài vùng cần phục hồi, trừ khi bắt buộc để đảm bảo chuyển động liền mạch tại ranh giới inpainting.
+- Không thêm người, nhân vật, bàn tay, nguyên liệu, đạo cụ, hiệu ứng hoặc chuyển cảnh.
+- Không làm đẹp lại món ăn.
+- Không thay đổi màu.
+- Không thay đổi ánh sáng.
+- Không thêm chiều sâu điện ảnh.
+- Không làm nét quá mức.
+- Không thay đổi tốc độ.
+- Không nội suy thêm frame.
+- Không thêm lời thoại.
+XIV. NEGATIVE PROMPT BẮT BUỘC
+Phải tạo một negative prompt gồm đầy đủ:
+additional person, woman, man, grandmother, presenter, doctor, narrator, face, body, avatar, talking character, lip sync, extra hand, extra fingers, missing fingers, fused fingers, deformed hand, mirrored hand, wrong hand direction, changed nail color, changed skin tone, extra ingredient, missing ingredient, different ingredient, changed recipe, changed order, different bowl, different spoon, metal spoon, different cooker, different cup, different background, added decoration, added steam, added smoke, added particles, added light effects, camera movement not in source, zoom, crop, reframing, altered aspect ratio, black bars, slow motion, speed ramp, new transition, changed timing, changed duration, changed fps, text, title, subtitle, caption, follow badge, red banner, watermark, logo, UI, sticker, blurred text, mosaic text, empty banner, text shadow, ghost text, inpainting patch, flicker, temporal inconsistency, ghosting, warping, texture repetition, color shift, exposure shift, changed food consistency, CGI look, cartoon style, oversharpening, artificial bokeh, added music, new voice, voice-over, transition sound, invented foley, echo, reverb.
+XV. KIỂM TRA CHẤT LƯỢNG CUỐI
+Trước khi xuất kết quả, Gemini phải tự so sánh video dự kiến với VIDEOMAU theo các tiêu chí:
+- Tổng thời lượng có trùng tuyệt đối không.
+- Số frame có trùng không.
+- Fps có trùng không.
+- Các điểm cắt có trùng không.
+- Thứ tự hình ảnh có trùng không.
+- Vị trí bát có trùng không.
+- Vị trí nồi có trùng không.
+- Vị trí muỗng có trùng không.
+- Quỹ đạo bàn tay có trùng không.
+- Thứ tự nguyên liệu có trùng không.
+- Màu sắc có trùng không.
+- Độ sánh có trùng không.
+- Góc máy có trùng không.
+- Chuyển động có trùng không.
+- Track âm thanh có trùng không.
+- Tất cả chữ đã được xóa chưa.
+- Có còn banner đỏ không.
+- Có còn nhãn Follow không.
+- Có dấu vết blur, mảng vá hoặc nhấp nháy không.
+- Có thêm nhân vật, người hoặc vật thể không.
+Nếu có bất kỳ điểm nào chưa đạt, phải sửa prompt hoặc kế hoạch phục dựng trước khi xuất.
+XVI. YÊU CẦU ĐẦU RA
+Chỉ xuất đúng các phần sau:
+PHẦN 1 – METADATA VIDEO GỐC:
+- Tên tệp.
+- Thời lượng chính xác.
+- Độ phân giải.
+- Tỷ lệ khung hình.
+- Fps.
+- Codec hình và âm thanh.
+PHẦN 2 – PHÂN TÍCH TỔNG THỂ:
+- Nội dung video.
+- Phong cách hình ảnh.
+- Bố cục.
+- Ánh sáng.
+- Màu sắc.
+- Camera.
+- Đạo cụ.
+- Nguyên liệu.
+- Chuyển động.
+- Âm thanh.
+PHẦN 3 – TIMELINE FRAME-BY-FRAME:
+- Phân tích đầy đủ từng shot theo cấu trúc tại Mục XII.
+PHẦN 4 – BẢN ĐỒ XÓA CHỮ:
+- Vị trí từng vùng chữ.
+- Khoảng thời gian tồn tại.
+- Vật thể bị che.
+- Cách phục hồi theo từng shot.
+PHẦN 5 – MASTER VIDEO RECONSTRUCTION PROMPT:
+- Một prompt hoàn chỉnh để chỉnh sửa hoặc tái tạo video.
+PHẦN 6 – PROMPT RIÊNG CHO TỪNG SHOT:
+- Mỗi shot có một prompt riêng.
+- Ghi đúng thời lượng và timecode.
+- Không được tự kéo mỗi shot thành 8 giây.
+PHẦN 7 – NEGATIVE PROMPT:
+- Liệt kê đầy đủ mọi yếu tố bị cấm.
+PHẦN 8 – BẢNG KIỂM TRA CUỐI:
+- Xác nhận không thêm nhân vật.
+- Xác nhận giữ nguyên thời lượng.
+- Xác nhận giữ nguyên trình tự.
+- Xác nhận giữ nguyên âm thanh gốc hoặc chỉ dùng âm thanh thật sự có trong bản gốc.
+- Xác nhận đã xóa toàn bộ chữ.
+- Xác nhận không blur, không crop, không mosaic và không để dấu vết chỉnh sửa.
+Không trình bày chuỗi suy luận nội bộ. Không rút gọn kết quả. Không để placeholder. Không đưa ra ví dụ giả thay cho phân tích thật của VIDEOMAU.
